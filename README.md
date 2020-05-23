@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## 截图
+
+![image](https://raw.githubusercontent.com/nxgh/react-music/master/screenshot/0c82a2e8f6fb28df92ce770a8c3f7c08.gif)
+
+![image](https://raw.githubusercontent.com/nxgh/react-music/master/screenshot/82d8795a0c4789bdf1c27f9ee0cdd4e3.gif)
 ## Available Scripts
 
 In the project directory, you can run:
