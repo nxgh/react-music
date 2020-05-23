@@ -11,3 +11,7 @@ export const getRecommendNewSongRequest = () =>
 export const getRecommendDJRequest = () => {
   return request.get('/personalized/djprogram')
 }
+
+export const getPlayListDetailRequest = (id) => {
+  return request.get(`/playlist/detail?id=${id}`)
+}

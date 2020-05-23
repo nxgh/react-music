@@ -21,7 +21,7 @@ export const ListItem = styled.span`
   }
   .desc {
     font-size: 0.75rem;
-    color: ${style['font-color-desc']};
+    color: ${style['font-color-desc-light']};
   }
 `
 export const Container = styled.div`

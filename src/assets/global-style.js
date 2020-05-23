@@ -20,11 +20,11 @@ const noWrap = () => {
 }
 
 export const globalStyle = {
-  'theme-color': '#d44439',
+  'theme-color': '#000',
   'theme-color-shadow': 'rgba(212, 68, 57, .5)',
   'font-color-light': '#f1f1f1',
-  'font-color-desc': '#2e3030',
-  'font-color-desc-v2': '#bba8a8', //略淡
+  'font-color-desc-light': '#929292',
+  'font-color-desc-black': '#333333', 
   'font-size-ss': '0.625rem',
   'font-size-s': '0.75rem',
   'font-size-m': '0.875rem',

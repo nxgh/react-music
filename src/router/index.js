@@ -4,6 +4,7 @@ import Layout from '../layout'
 import Recommend from '../pages/Recommend'
 import My from '../pages/My'
 import Rank from '../pages/Rank'
+import PlayList from '../pages/PlayList'
 
 export default [
   {
@@ -16,8 +17,9 @@ export default [
         render: () => <Redirect to={'/recommend'} />,
       },
       {
-        path: '/recommend',
+        path: '/recommend/',
         component: Recommend,
+        routes: [{ path: '/recommend/:id', component: PlayList }],
       },
       {
         path: '/my',

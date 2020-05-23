@@ -65,7 +65,6 @@ export const getRecommendDJList = () => {
     getRecommendDJRequest()
       .then((data) => {
         dispatch(changeRecommendDJList(data.result))
-        console.log(data)
       })
       .catch((e) => {
         console.log('推荐热门电台数据传输错误', e)

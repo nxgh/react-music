@@ -1,5 +1,4 @@
 import React, { memo, useRef, useEffect } from 'react'
-import PropTypes from 'prop-types'
 
 import Scroll from '../Scroll'
 
@@ -9,7 +8,7 @@ function Horizen(props) {
   const Category = useRef(null)
 
   const { recommendList, title } = props
-
+  
   useEffect(() => {
     if (recommendList.length) {
       let categoryDOM = Category.current
@@ -34,12 +33,5 @@ function Horizen(props) {
     </Container>
   )
 }
-// Horizen.defaultProps = {
-//   recommendList: [],
-// }
-
-// Horizen.propTypes = {
-//   recommendList: PropTypes.array,
-// }
 
 export default memo(Horizen)
