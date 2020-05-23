@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { renderRoutes } from 'react-router-config'
 
 import Carousel from '../../components/UI/Carousel'
 import Scroll from '../../components/UI/Scroll'
@@ -12,9 +13,9 @@ import { ReactComponent as SongList } from '../../assets/svg/song-list.svg'
 import { Content, Nav } from './style'
 import * as actionTypes from '../../store/Recommend/action'
 
-import SongListComponent from './Child/songList'
-import NewSongListComponent from './Child/newSong'
-import DJListComponent from './Child/dj'
+import SongListComponent from './Child/SongList'
+import NewSongListComponent from './Child/NewSong'
+import DJListComponent from './Child/DJ'
 
 const NavIconList = () => {
   return (
@@ -85,6 +86,7 @@ function Recommend(props) {
           />
         </div>
       </Scroll>
+      {renderRoutes(props.route.routes)}
     </Content>
   )
 }

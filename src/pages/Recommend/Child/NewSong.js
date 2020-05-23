@@ -1,13 +1,15 @@
 import React from 'react'
+
 import { List, ListItem } from '../../../components/UI/Horizen/style'
 import Horizen from '../../../components/UI/Horizen'
 
-export default (props) => {
-  const { title, recommendList } = props
+export default React.memo((props) => {
+  const { title, recommendNewSongList } = props
+
   return (
-    <Horizen title={title} recommendList={recommendList}>
+    <Horizen title={title} recommendList={recommendNewSongList}>
       <List>
-        {recommendList.map((item) => {
+        {recommendNewSongList.map((item) => {
           return (
             <ListItem key={item.id}>
               <div className='list-item-wrap'>
@@ -20,4 +22,4 @@ export default (props) => {
       </List>
     </Horizen>
   )
-}
+})

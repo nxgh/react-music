@@ -10,7 +10,7 @@ export const Content = styled.div`
 export const Nav = styled.div`
   display: flex;
   justify-content: space-around;
-  margin-top: 15px;
+  margin: 15px 0;
   span {
     display: flex;
     justify-content: center;
