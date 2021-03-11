@@ -1,25 +1,22 @@
 import useSWR from 'swr'
 import { getFetcher, baseUrl } from './index'
+import { IBaseReturnType } from './types'
 
 const personalizeUrl = baseUrl`/personalized`
 
-interface baseType {
-  isLoading: boolean
-  isError: boolean
-}
+
 
 export interface IPersonalizedItem {
-  imageUrl: string
+  picUrl: string
+  id: number
+  name: string
+  playCount: number
   [propName: string]: string | boolean | number | null
 }
 
-interface IPersonalizedData {
-  banners: IPersonalizedItem[]
-  code: number
-}
 
-interface IPersonalizedResp extends baseType {
-  data: IPersonalizedData
+interface IPersonalizedResp extends IBaseReturnType {
+  data: IPersonalizedItem[]
 }
 
 const usePersonalized = (): IPersonalizedResp => {

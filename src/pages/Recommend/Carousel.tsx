@@ -3,16 +3,13 @@ import SwiperCore, { Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper.min.css'
 
-import { IBannerItem } from '../../api/use-banner'
+import useBanner from '../../api/use-banner'
 SwiperCore.use([Autoplay])
 
-interface IProps {
-  bannerList: IBannerItem[]
-}
+const Carousel: FC = () => {
 
-const Carousel: FC<IProps> = props => {
-  const { bannerList } = props
-
+  const { data, isLoading } = useBanner()
+  if (isLoading) return <div></div>
   return (
     <Swiper
       spaceBetween={50}
@@ -21,11 +18,13 @@ const Carousel: FC<IProps> = props => {
         delay: 1500,
         disableOnInteraction: false,
       }}
-      onSlideChange={() => {}}
-      onSwiper={swiper => {}}>
-      {bannerList.map((item, index) => (
-        <SwiperSlide key={index}>
-          <img src={item.imageUrl} />
+      onSlideChange={() => { }}
+      onSwiper={swiper => { }}
+      className="rounded-md mb-2"
+    >
+      {data?.map((item, index) => (
+        <SwiperSlide className="" key={index}>
+          <img className="" src={item.imageUrl} />
         </SwiperSlide>
       ))}
     </Swiper>

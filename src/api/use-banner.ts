@@ -1,12 +1,10 @@
 import useSWR from 'swr'
 import { getFetcher, baseUrl } from './index'
+import { IBaseReturnType } from './types'
 
 const bannerUrl = baseUrl`/banner`
 
-interface baseType {
-  isLoading: boolean
-  isError: boolean
-}
+
 
 export interface IBannerItem {
   imageUrl: string
@@ -18,14 +16,16 @@ interface IBannerData {
   code: number
 }
 
-interface IBannerResp extends baseType {
-  data: IBannerData
+type IBannerResp = IBannerData | undefined
+
+interface IUseBannerResp extends IBaseReturnType {
+  data: IBannerItem[] | undefined
 }
 
-const useBanner = (): IBannerResp => {
-  const { data, error } = useSWR(bannerUrl, getFetcher)
+const useBanner = (): IUseBannerResp => {
+  const { data, error } = useSWR<IBannerResp>(bannerUrl, getFetcher)
   return {
-    data: data,
+    data: data?.banners,
     isLoading: !error && !data,
     isError: error,
   }
