@@ -12,8 +12,8 @@ const Carousel: FC = (props) => {
     // if (isLoading) return <div></div>
     return (
         <Swiper
-            spaceBetween={20}
-            slidesPerView={3}
+            spaceBetween={2}
+            slidesPerView={10}
 
             onSlideChange={() => { }}
             onSwiper={swiper => { }}

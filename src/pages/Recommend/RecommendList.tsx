@@ -25,23 +25,22 @@ const RecommendList: FC = () => {
   return (
     <div>
       <h2>推荐歌单</h2>
-      <SongListSwiper data={data} />
-      {/* <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-6 gap-5">
         {data.map(item => (
           <div key={item.id} className="relative">
-            <div className="">
+            <div className="cursor-pointer rounded-xl">
               <LazyLoad placeholder={<img className="" width="100%" height="100%" src={placeholderImg} alt="music" />}>
-                <img className="" src={item.picUrl + '?param=300x300'} width="100%" height="100%" alt="music" />
+                <img className="rounded" src={item.picUrl + '?param=300x300'} width="100%" height="100%" alt="music" />
               </LazyLoad>
-              <div className="absolute top-0 right- flex ">
+              <div className="absolute top-1 right-2 flex ">
                 <IHeadset theme="outline" size="12" fill="white" />
                 <span className="text-xs text-white">{getCount(item.playCount)}</span>
               </div>
-              <div className="text-xs break-all">{item.name}</div>
+              <div className="text-md text-gray-700 break-all hover:text-black">{item.name}</div>
             </div>
           </div>
         ))}
-      </div> */}
+      </div>
     </div>
   )
 }
