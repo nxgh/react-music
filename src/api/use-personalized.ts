@@ -1,26 +1,19 @@
+import { Result } from 'postcss'
 import useSWR from 'swr'
 import { getFetcher, baseUrl } from './index'
-import { IBaseReturnType } from './types'
+import { IBaseReturnType } from './types/base-return'
+import { Personalized, PersonalizedResult } from './types/personalized'
+
 
 const personalizeUrl = baseUrl`/personalized`
 
 
-
-export interface IPersonalizedItem {
-  picUrl: string
-  id: number
-  name: string
-  playCount: number
-  [propName: string]: string | boolean | number | null
-}
-
-
 interface IPersonalizedResp extends IBaseReturnType {
-  data: IPersonalizedItem[]
+  data: PersonalizedResult[] | undefined
 }
 
 const usePersonalized = (): IPersonalizedResp => {
-  const { data, error } = useSWR(personalizeUrl, getFetcher)
+  const { data, error } = useSWR<Personalized | undefined>(personalizeUrl, getFetcher)
   return {
     data: data?.result,
     isLoading: !error && !data,
