@@ -11,6 +11,11 @@ const Home = lazy(() => import('../pages/Home'))
 const Recommend = lazy(() => import('../pages/Recommend'))
 const Singers = lazy(() => import('../pages/Singers'))
 const Rank = lazy(() => import('../pages/Rank'))
+const Playlist = lazy(() => import('../pages/Playlist'))
+const Fm = lazy(() => import('../pages/Fm'))
+const Album = lazy(() => import('../pages/Album'))
+const PlaylistDetail = lazy(() => import('../pages/Playlist/Detail'))
+const NotFound = lazy(() => import('../pages/Error/NotFound'))
 const routes: RouteConfig[] = [
   {
     path: '/',
@@ -19,10 +24,10 @@ const routes: RouteConfig[] = [
       {
         path: '/',
         exact: true,
-        render: () => <Redirect to={'/recommend'} />,
+        render: () => <Redirect to={'/recommends'} />,
       },
       {
-        path: '/recommend',
+        path: '/recommends',
         component: SuspenseComponent(Recommend),
       },
       {
@@ -32,6 +37,30 @@ const routes: RouteConfig[] = [
       {
         path: '/rank',
         component: SuspenseComponent(Rank),
+      },
+      {
+        path: '/playlists',
+        component: SuspenseComponent(Playlist),
+      },
+      {
+        path: '/album',
+        component: SuspenseComponent(Album),
+      },
+      {
+        path: '/fm',
+        component: SuspenseComponent(Fm),
+      },
+      {
+        path: '/playlist/:id',
+        component: SuspenseComponent(PlaylistDetail),
+      },
+      {
+        path: '/404',
+        component: SuspenseComponent(NotFound),
+      },
+      {
+        path: '*',
+        render: () => <Redirect to={'/404'} />,
       },
     ],
   },

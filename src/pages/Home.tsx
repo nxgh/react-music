@@ -1,6 +1,6 @@
 import React, { FC, memo } from 'react'
 import { renderRoutes, RouteConfigComponentProps } from 'react-router-config'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import { Left, Right, Minus, FullScreenTwo, Close, Github, User, RightOne, Record } from '@icon-park/react'
 
 import SwiperCore, { Pagination } from 'swiper'
@@ -14,15 +14,16 @@ interface IProps {
 }
 
 const headerNav = [
-  { text: '推荐', link: '/recommend' },
+  { text: '推荐', link: '/recommends' },
   { text: '排行榜', link: '/rank', },
-  { text: '歌单', link: '/recommend', },
-  { text: '主播电台', link: '/recommend', },
-  { text: '歌手', link: '/recommend', },
-  { text: '新碟上架', link: '/recommend', },
+  { text: '歌单', link: '/playlists', },
+  { text: '主播电台', link: '/fm', },
+  { text: '歌手', link: '/singers', },
+  { text: '新碟上架', link: '/album', },
 ]
 
 const HeaderAction = () => {
+  const history = useHistory()
   return (
     <div className="flex justify-between sticky top-0 bg-white z-50" >
       <div className="ml-2">
@@ -31,8 +32,8 @@ const HeaderAction = () => {
         <FullScreenTwo className="p-0.5 bg-yellow-600 rounded-xl mr-1 hover:bg-yellow-700" theme="outline" size="10" fill="white" />
       </div>
       <div className="flex justify-end items-center  ">
-        <Left theme="outline" size="18" fill="#333" />
-        <Right theme="outline" size="18" fill="#333" />
+        <Left theme="outline" size="18" fill="#333" onClick={() => history.goBack()} />
+        <Right theme="outline" size="18" fill="#333" onClick={() => history.goForward()} />
       </div>
     </div>
   )
