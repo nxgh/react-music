@@ -2,19 +2,45 @@ import React, { FC, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { isEmptyObj } from '../../utils/tools';
 import usePlaylistDetail from '../../api/use-playlist-detail';
+import Table, { IColumn } from '../../components/Table'
 
 interface MTableProps {
     dataSource: object
     columns: any[]
 }
 
+const columns = [
+    {
+        title: '',
+        key: 'start',
+        width: '30px',
+        render: (value: any) => <div>{value}</div>
+    },
+    {
+        title: '音乐标题',
+        key: 'name',
+        width: '500px',
+        render: (name: string) => <div>{name}</div>
+    },
+    {
+        title: '歌手',
+        key: 'name',
+        width: '300px',
+        render: (name: string) => <div>{name}</div>
+    },
+    {
+        title: '时长',
+        key: 'name',
+        width: '300px',
+        render: (name: string) => <div>{name}</div>
+    },
+    {
+        title: '专辑',
+        key: 'name',
+        render: (name: string) => <div>{name}</div>
+    }
+]
 
-const MTable: FC<MTableProps> = ({ dataSource, columns }) => {
-    return (
-        <div>
-        </div>
-    )
-}
 
 
 const Rank = () => {
@@ -36,7 +62,7 @@ const Rank = () => {
         <div>
             <div className="flex mt-5">
                 <img className="w-48 h-48 mr-5" src={coverImgUrl} alt="" />
-                <div className="h-48 flex flex-col itmes-around justify-around">
+                <div className="flex flex-col itmes-around justify-around">
                     <p><span className="text-sm border border-red-600 text-red-600 px-1 py-0.5 rounded mr-2">歌单</span>
                         <span className="text-xl">{name}</span></p>
                     <div className="flex items-center">
@@ -53,14 +79,15 @@ const Rank = () => {
                     <p className="text-gray-600 text-sm">简介: {description}</p>
                 </div>
             </div>
-            {
+            <Table columns={columns} data={tracks} ></Table>
+            {/* {
                 tracks.map((item, index) => (
                     <div key={item.id} className={`${index % 2 === 0 && 'bg-gray-100'} flex justify-between w-full`}>
                         <span>{item.name}</span>
                         <span className="mr-2 text-gray-600">{item.ar.map(item => item.name)}</span>
                     </div>
                 ))
-            }
+            } */}
         </div>
     )
 }
