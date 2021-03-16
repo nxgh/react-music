@@ -1,10 +1,12 @@
 import React, { FC, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { ArcDeTriomphe, Play } from '@icon-park/react'
-import { isEmptyObj } from '../../utils/tools';
-import usePlaylistDetail from '../../api/use-playlist-detail';
+import { isEmptyObj } from '../../utils/tools'
+import usePlaylistDetail from '../../api/use-playlist-detail'
 import Table, { IColumn } from '../../components/Table'
-import dayjs from 'dayjs';
+import dayjs from 'dayjs'
+import usePlaylistComment from '../../api/use-playlist-comment'
+import Comment from '../../components/Comments'
 
 interface MTableProps {
   dataSource: object
@@ -52,7 +54,9 @@ const columns = [
 const Rank = () => {
   const location = useLocation()
 
-  const { data } = usePlaylistDetail(location.pathname.split('/')[2])
+  const playlistId = location.pathname.split('/')[2]
+  const { data } = usePlaylistDetail(playlistId)
+  const { comments } = usePlaylistComment(playlistId)
 
   if (data?.code !== 200) {
     return <div>未找到歌单</div>
@@ -61,6 +65,7 @@ const Rank = () => {
     return (<div>loading ...</div>)
 
   const { name, id, description, tags, tracks, trackCount, coverImgUrl, shareCount, commentCount, creator, playCount } = data.playlist
+
 
 
   const tableData = tracks.map(item => ({
@@ -82,7 +87,7 @@ const Rank = () => {
             <p className="text-gray-400 text-sm">{creator.nickname}</p>
           </div>
           <p className="text-gray-500 text-sm my-1">歌曲数:{trackCount}</p>
-          <span className="my-1 flex bg-red-600 w-20 justify-center items-center rounded-xl text-white text-sm p-1 hover:bg-red-700 cursor-pointer">播放全部</span>
+          <span className="my-1 flex bg-red-500 w-20 justify-center items-center rounded-xl text-white text-sm p-1 hover:bg-red-600 cursor-pointer">播放全部</span>
           <p className="text-sm my-1">标签： {tags.map(item => <span className="text-gray-500 mr-2 text-sm">{item}</span>)}</p>
           <p className="text-sm my-1">
             <span>分享 {shareCount}</span>
@@ -93,6 +98,7 @@ const Rank = () => {
         </div>
       </div>
       <Table columns={columns} data={tableData} ></Table>
+      <Comment comments={comments}></Comment>
     </div>
   )
 }
