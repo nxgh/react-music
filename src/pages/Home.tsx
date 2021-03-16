@@ -25,7 +25,7 @@ const headerNav = [
 const HeaderAction = () => {
   const history = useHistory()
   return (
-    <div className="flex justify-between sticky top-0 bg-white z-50" >
+    <div className="flex justify-between sticky top-0 bg-white z-50 border-b" >
       <div className="ml-2">
         <Minus className="p-0.5 bg-green-500 rounded-xl mr-1 hover:bg-green-600" theme="outline" size="10" />
         <Close className="p-0.5 bg-red-500 rounded-xl mr-1 hover:bg-red-600" theme="outline" size="10" fill="white" />
@@ -41,7 +41,7 @@ const HeaderAction = () => {
 }
 const HeaderNav = () => {
   return (
-    <div className="bg-white flex justify-between sticky top-0 z-50">
+    <div className="bg-white flex justify-between sticky top-0 z-50 border-b">
       <div className="flex items-center">
         {
           headerNav.map(item =>
@@ -96,7 +96,7 @@ const Home: FC<IProps> = props => {
       <HeaderNav />
       <SideBar />
       {/* <div /> */}
-      <div className="flex col-start-2">
+      <div className="flex col-start-2 border-l pl-5">
         {renderRoutes(props.route.routes)}
       </div>
     </div >
